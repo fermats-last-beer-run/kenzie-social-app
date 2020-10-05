@@ -1,8 +1,10 @@
 import React from "react";
 import DataService from "../../dataService";
 import { Button, Pane, TextInput } from "evergreen-ui";
-import UploadPicture from "../uploadPicture/index";
+import UploadPicture from "../UploadPicture/index";
 import AvatarImage from "../Avatarimage/avatarImage";
+import { store } from "../../redux"
+
 
 class UserCard extends React.Component {
   constructor(props) {
@@ -64,14 +66,20 @@ class UserCard extends React.Component {
   render() {
     return (
       <Pane
-        background="yellowTint"
+        background="#F70154"
         border="default"
         width="100%"
-        height={620}
+        height={720}
         marginRight={16}
+        marginBottom={32}
+        padding={20}
         float="left"
         className="usercard"
       >
+        <AvatarImage 
+            username={store.getState().auth.login.result.username}
+            size={64}
+          />
         <h3>User Name: {this.state.userName}</h3>
         <h3>Display Name: {this.state.displayName}</h3>
         <h3>About: {this.state.about}</h3>
